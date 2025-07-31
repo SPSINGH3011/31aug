@@ -14,12 +14,12 @@ data "azurerm_key_vault" "kv" {
   resource_group_name = var.resource_group_name
 }
 
-data "azurerm_key_vault_secret" "vm-username" {
-  name         = ""
+data "azurerm_key_vault_secret" "username" {
+  name         = var.username_secret_name
   key_vault_id = data.azurerm_key_vault.kv.id
 }
 
-data "azurerm_key_vault_secret" "vm-password" {
+data "azurerm_key_vault_secret" "password" {
   name         = var.password_secret_name
   key_vault_id = data.azurerm_key_vault.kv.id
 }

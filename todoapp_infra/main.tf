@@ -26,25 +26,25 @@ module "virtual_network" {
   address_space            = ["10.0.0.0/16"]
 }
 
-module "virtual_network" {
-  depends_on = [module.resource_group]
-  source     = "../modules/azurerm_virtual_network"
+# module "virtual_network" {
+#   depends_on = [module.resource_group]
+#   source     = "../modules/azurerm_virtual_network"
 
-  virtual_network_name     = "vnet-tondu"
-  virtual_network_location = "centralindia"
-  resource_group_name      = "rg-todoapp"
-  address_space            = ["10.0.0.0/16"]
-}
+#   virtual_network_name     = "vnet-tondu"
+#   virtual_network_location = "centralindia"
+#   resource_group_name      = "rg-todoapp"
+#   address_space            = ["10.0.0.0/16"]
+# }
 
-  module "virtual_network" {
-  depends_on = [module.resource_group]
-  source     = "../modules/azurerm_virtual_network"
+#   module "virtual_network" {
+#   depends_on = [module.resource_group]
+#   source     = "../modules/azurerm_virtual_network"
 
-  virtual_network_name     = "vnet-dhondhu"
-  virtual_network_location = "centralindia"
-  resource_group_name      = "rg-todoapp"
-  address_space            = ["10.0.0.0/16"]
-}
+#   virtual_network_name     = "vnet-dhondhu"
+#   virtual_network_location = "centralindia"
+#   resource_group_name      = "rg-todoapp"
+#   address_space            = ["10.0.0.0/16"]
+# }
     
 module "frontend_subnet" {
   depends_on = [module.virtual_network]
@@ -111,9 +111,9 @@ module "frontend_vm" {
   frontend_ip_name     = "pip-todoapp-frontend"
   vnet_name            = "vnet-todoapp"
   frontend_subnet_name = "frontend-subnet"
-  key_vault_name       = "sonamkitijori"
-  username_secret_name = "vm-username"
-  password_secret_name = "vm-password"
+  key_vault_name       = "augkeyvault"
+  username_secret_name = "username"
+  password_secret_name = "password"
 }
 
 # module "public_ip_backend" {
